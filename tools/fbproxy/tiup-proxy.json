@@ -1,0 +1,30 @@
+{
+  "redirect": "http://fileserver.pingcap.net/download/pingcap/qa/archives%s",
+  "components": [
+    {
+      "name": "pd",
+      "entry": "bin/pd-server",
+      "platforms": ["linux/amd64"]
+    },
+    {
+      "name": "tikv",
+      "entry": "bin/tikv-server",
+      "platforms": ["linux/amd64"]
+    },
+    {
+      "name": "tidb",
+      "entry": "bin/tidb-server",
+      "platforms": ["linux/amd64"]
+    },
+    {
+      "name": "ticdc",
+      "entry": "bin/cdc",
+      "platforms": ["linux/amd64"]
+    },
+    {
+      "name": "br",
+      "entry": "bin/br",
+      "platforms": ["linux/amd64"]
+    }
+  ]
+}
