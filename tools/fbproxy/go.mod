@@ -7,4 +7,4 @@ require (
 	github.com/pingcap/errors v0.11.5-0.20190809092503-95897b64e011
 )
 
-replace github.com/pingcap-incubator/tiup => ../../
+// replace github.com/pingcap-incubator/tiup => ../../

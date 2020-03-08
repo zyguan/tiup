@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fbproxy
+  labels:
+    app: fbproxy
+spec:
+  selector:
+    matchLabels:
+      app: fbproxy
+  template:
+    metadata:
+      labels:
+        app: fbproxy
+    spec:
+      containers:
+      - name: fbproxy
+        image: hub.pingcap.net/zyguan/fbproxy
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fbproxy
+  labels:
+    app: fbproxy
+spec:
+  type: NodePort
+  selector:
+    app: fbproxy
+  ports:
+  - port: 8000
+    protocol: TCP
