@@ -47,12 +47,6 @@ func Download(component, nodeOS, arch string, version string) error {
 		return err
 	}
 
-	if utils.IsExist(srcPath) {
-		if err := repo.VerifyComponent(component, version, srcPath); err != nil {
-			os.Remove(srcPath)
-		}
-	}
-
 	// Download from repository if not exists
 	if utils.IsNotExist(srcPath) {
 		if err := repo.DownloadComponent(component, version, srcPath); err != nil {

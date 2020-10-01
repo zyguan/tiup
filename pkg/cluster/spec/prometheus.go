@@ -43,6 +43,7 @@ type PrometheusSpec struct {
 	Arch            string               `yaml:"arch,omitempty"`
 	OS              string               `yaml:"os,omitempty"`
 	RuleDir         string               `yaml:"rule_dir,omitempty" validate:"rule_dir:editable"`
+	RemoteWriteURL  string               `yaml:"remote_write_url,omitempty" validate:"remote_write_url:editable"`
 }
 
 // Role returns the component role of the instance
@@ -152,6 +153,8 @@ func (i *MonitorInstance) InitConfig(
 	// transfer config
 	fp = filepath.Join(paths.Cache, fmt.Sprintf("prometheus_%s_%d.yml", i.GetHost(), i.GetPort()))
 	cfig := config.NewPrometheusConfig(clusterName, enableTLS)
+	cfig.RemoteWriteURL = spec.RemoteWriteURL
+
 	cfig.AddBlackbox(i.GetHost(), uint64(topo.MonitoredOptions.BlackboxExporterPort))
 	uniqueHosts := set.NewStringSet()
 	for _, pd := range topo.PDServers {

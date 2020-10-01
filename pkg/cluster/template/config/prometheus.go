@@ -46,6 +46,7 @@ type PrometheusConfig struct {
 	BlackboxAddr              string
 	KafkaExporterAddr         string
 	GrafanaAddr               string
+	RemoteWriteURL            string
 }
 
 // NewPrometheusConfig returns a PrometheusConfig

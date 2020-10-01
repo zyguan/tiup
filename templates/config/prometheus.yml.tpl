@@ -7,6 +7,11 @@ global:
     cluster: '{{.ClusterName}}'
     monitor: "prometheus"
 
+{{- if .RemoteWriteURL }}
+remote_write:
+  - url: {{ .RemoteWriteURL }}
+{{- end }}
+
 # Load and evaluate rules in this file every 'evaluation_interval' seconds.
 rule_files:
   - 'node.rules.yml'
